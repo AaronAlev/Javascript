@@ -1,4 +1,4 @@
-let code = "50407120224"
+let code = "50503255711"
 
 
 function monthDecoder(month){
@@ -82,6 +82,28 @@ function hospitalDecoder(hospitalID){ // Decodes hospital code to hospital locat
     return "Isik on syndinud " + hospital + " " + nr.toString() + ". inimesena"
 }
 
+function controlNumber(id){
+    const weight1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+    const weight2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
+    let result = 0
+    id = id.slice(0, 10)
+    for (let i = 0; i < id.length; i++){
+        result += id[i] * weight1[i]
+    }
+    result = result % 11
+    if (result == 10){
+        let result2 = 0
+        for (let i = 0; i < id.length; i++){
+            result2 += id[i] * weight2[i]
+        }
+        result = result2 % 11
+    }
+    if(result == 10){
+        result = 0
+    }
+    return result
+}
+
 function idDecoder(id){
     let gender = id[0];
     let year = id.slice(1, 3);
@@ -93,7 +115,7 @@ function idDecoder(id){
 
     let hospitalID = id.slice(7, 10)
     let hospital = hospitalDecoder(hospitalID)
-    let cntrlNr = id.slice(-1)
+    let cntrlNr = controlNumber(id)
 
     if (gender === "1" || gender === "3" || gender === "5" || gender === "7"){ // Outputs if the person in male or female
         console.log("Isik isikukooduga " + id + " on mees")
@@ -108,7 +130,6 @@ function idDecoder(id){
     } else if (gender >= 5) {
         year = "20" + year
     }
-
     console.log("Kes on syndinud " + day + " " + month + " " + year + ". aastal")
     console.log(hospital)
     console.log("Kontrollnumbriga " + cntrlNr)

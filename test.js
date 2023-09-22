@@ -1,16 +1,16 @@
-// Hello world
-let x = "Hello"
-console.log("Hello world", x)
-const list = [1, 2, 3, 4]
-console.log(list)
-list.push(5)
-console.log(list)
+let tekst = "50407120224"
+let tempid = "002"
+id = parseInt(tempid)
+console.log(id)
 
-const dict = {
-    var1: "256",
-    var2: 256
+
+let hospitalID = tekst.slice(7, 10)
+console.log(hospitalID)
+
+let first_three = tekst.slice(1, 3)
+first_three.concat("20", first_three)
+console.log(first_three)
+
+if (tekst[0] == "a", "b"){
+    console.log("Yay")
 }
-
-console.log(dict)
-console.log(dict.var1)
-console.log(dict.var2)    
