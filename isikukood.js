@@ -1,4 +1,6 @@
-let code = "50503255711"
+const prompt = require('prompt-sync')();
+
+const code = prompt('Sisesta oma isikukood: ');
 
 
 function monthDecoder(month){
