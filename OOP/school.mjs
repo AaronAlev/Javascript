@@ -6,35 +6,51 @@ export default class School {
     }
 
     addCourse(course) {
-        if(!(course in this.courses)) {
+        let inArray = false
+        for(let i = 0; i < this.courses.length; i++) {
+            if (this.courses[i] == course) {
+                inArray = true
+            }
+        }
+        if (inArray == false) {
             this.courses.push(course)
         }
     }
 
     addStudent(student) {
-        if(!(student in this.courses)) {
+        let inArray = false
+        for(let i = 0; i < this.students.length; i++) {
+            if (this.students[i] == student) {
+                inArray = true
+            }
+        }
+        if (inArray == false) {
             this.students.push(student)
         }
     }
 
     addStudentGrade(student, course, grade) {
-        student.addGrade(course, grade)
-        course.addGrade(student, grade)
+        let inArray = false
+        for(let i = 0; i < this.students.length; i++) {
+            if (this.students[i] == student) {
+                inArray = true
+            }
+        }
+        if (inArray == true) {
+            student.addGrade(course, grade)
+            course.addGrade(student, grade)
+        }
     }
 
     getStudents() {
-        for(let i = 0; i < this.students.length; i++) {
-            console.log(this.students[i])
-        }
+        return this.students
     }
 
     getCourses() {
-        for(let i = 0; i < this.courses.length; i++) {
-            console.log(this.courses[i])
-        }
+        return this.courses
     }
 
     getStudentsOrderedByAverageGrade() {
-
+        return this.students.sort((a, b) => b.getAverageGrade() - a.getAverageGrade())
     }
 }

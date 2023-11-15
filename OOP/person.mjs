@@ -23,4 +23,3 @@ export default class Person {
         return this.name + " on inimene, kes on syndinud " + this.year + ". aastal"
     }
 }
-

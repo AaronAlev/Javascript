@@ -1,6 +1,8 @@
-export default class Student {
+import Person from "./person.mjs"
+
+export default class Student extends Person {
     constructor(name) {
-        this.name = name
+        super(name)
         this.id = null
         this.grades = []
     }
@@ -12,7 +14,7 @@ export default class Student {
     }
 
     getId() {
-        console.log(this.id)
+        return this.id
     }
 
     addGrade(course, grade) {
@@ -20,10 +22,7 @@ export default class Student {
     }
 
     getGrades() {
-        console.log(this.name + "'s grades:")
-        for(let i = 0; i < this.grades.length; i++){
-            console.log(this.grades[i][1] + " in " + this.grades[i][0].name)
-        }
+        return this.grades
     }
 
     getAverageGrade() {
@@ -33,10 +32,10 @@ export default class Student {
             total += this.grades[i][1]
             count += 1
         }
-        console.log("Average grade for " + this.name + " is " + total / count)
+        return total / count
     }
 
     description() {
-        this.name
+        return this.name
     }
 }

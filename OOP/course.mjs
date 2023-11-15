@@ -9,10 +9,7 @@ export default class Course {
     }
 
     getGrades() {
-        console.log("Grades for " + this.name + ":")
-        for(let i = 0; i < this.grades.length; i++){
-            console.log(this.grades[i][0].name + ": " + this.grades[i][1])
-        }
+        return this.grades
     }
 
     getAverageGrade() {
@@ -22,7 +19,7 @@ export default class Course {
             total += this.grades[i][1]
             count += 1
         }
-        console.log("Average grade of " + this.name + " is " + (total / count))
+        return total / count
     }
 
     description() {
