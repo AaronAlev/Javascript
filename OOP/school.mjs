@@ -1,8 +1,11 @@
+import Student from "./student.mjs"
+
 export default class School {
     constructor(name) {
         this.name = name
         this.students = []
         this.courses = []
+        this.newId = 1
     }
 
     addCourse(course) {
@@ -26,6 +29,11 @@ export default class School {
         }
         if (inArray == false) {
             this.students.push(student)
+            if (student.getId() == null) {
+                student.setId(this.newId)
+                this.newId += 1
+            }
+
         }
     }
 

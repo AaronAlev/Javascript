@@ -12,7 +12,8 @@ export default class Person {
     }
 
     age() {
-        return 2023- this.birthYear
+        const year = new Date()
+        return year.getFullYear() - this.birthYear
     }
 
     getName() {
@@ -20,6 +21,6 @@ export default class Person {
     }
 
     description() {
-        return this.name + " on inimene, kes on syndinud " + this.year + ". aastal"
+        return this.name + " on inimene, kes on syndinud " + this.birthYear + ". aastal"
     }
 }
